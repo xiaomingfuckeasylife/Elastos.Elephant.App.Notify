@@ -3,16 +3,15 @@
 ### software requirement 
 
 - jdk1.8 or above
-- redis
 - maven 
 - tomcat
 
 ### packaging
 
 ```sh
->$ cd Elastos.ORG.Fun
+>$ cd Elastos.Elephant.App.Notify
 >$ mvn clean package
->$ cp target/fun.war tomcat/webapp
+>$ cp target/notify.war tomcat/webapp
 >$ cd tomcat-location
 >$ sh bin/start.sh
 >$ tail -f logs/catalina.out
