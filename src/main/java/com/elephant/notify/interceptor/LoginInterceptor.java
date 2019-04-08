@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
+import com.jfinal.kit.PropKit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +24,9 @@ public class LoginInterceptor implements Interceptor {
 			String uri = req.getRequestURI();
 			String full_url = req.getRequestURL().toString();
 			logger.info("URI = {} , URL = {}",uri ,full_url);
+			int port = req.getServerPort();
+			String ctx = req.getScheme() + (PropKit.getBoolean("https") ? "s" : "") + "://" + req.getServerName()+(port == 80 ? "":":"+port);
+			c.setAttr("ctx", ctx);
 			inv.invoke();
 		}catch(Throwable ex) {
 			ex.printStackTrace();

@@ -9,3 +9,13 @@ recomend_gas_per_tx=0.0001
 node_http_rest_addr_utxo=http://localhost:21334/api/v1/asset/utxos
 node_http_rest_sendRawTx=http://localhost:21334/api/v1/transaction
 node_http_rest_getTransactionByHash=http://localhost:21334/api/v1/transaction
+
+#elephant
+elephant_login_auth=elaphant://identity?CallbackUrl=%s&ReturnUrl=%s&Description=%s&AppID=%s&PublicKey=%s&Signature=%s&DID=%s&RandomNumber=%s&AppName=%s&RequestInfo=ELAAddress,Email,PhoneNumber
+elephant_pay=elaphant://elapay?CallbackUrl=%s&Description=%s&AppID=%s&SerialNumber=%s&PublicKey=%s&Signature=%s&Amount=%f&PaymentAddress=%s&DID=%s&CoinName=ELA&AppName=%s
+app_id=cc053c61afc22dda9a309e96943c1736
+did_pubkey=03800183146B09B2667B67AF2E33A1738C9FF17FD7F3D8A67A4BBEF2D4B84A300B
+did=iihfq1sMyWep5zH5CcFTnEZWR3De5fnLf6
+did_signature=1EDB4147AEF65D0F0B0F518F461AE17D26159681303B935D4540FF91BA4A0B66C369574592E5D9F0FC79260BC0D3DF6535C55EC8D1F6C6F6DD946703F69802E2
+app_name=notification
+https=false

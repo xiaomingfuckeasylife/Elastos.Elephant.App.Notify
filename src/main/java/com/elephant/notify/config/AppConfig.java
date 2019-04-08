@@ -45,7 +45,7 @@ public class AppConfig extends JFinalConfig{
 	public void configRoute(Routes me) {
 		
 		me.add(new Router());
-		
+
 	}
 	
 	public static C3p0Plugin createC3p0Plugin() {
@@ -70,19 +70,13 @@ public class AppConfig extends JFinalConfig{
 	 */
 	public void configPlugin(Plugins me) {
 		
-//		C3p0Plugin C3p0Plugin = createC3p0Plugin();
 		DruidPlugin duildPlugin = createDruidPlugin();
 		me.add(duildPlugin);
 		
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(duildPlugin);
-//		arp.setTransactionLevel(transactionLevel)
 		arp.setShowSql(true);
 		me.add(arp);
-		
-		// redis plugin
-		RedisPlugin redisPlugin = createRedisPlugin();
-		me.add(redisPlugin);
-		
+
 		// cron4j plugin
 		Cron4jPlugin cp = createCron4jPlugin();
 		me.add(cp);

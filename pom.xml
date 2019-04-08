@@ -88,25 +88,16 @@
 			<version>0.9.1.2</version>
 		</dependency>
 
-		<!-- http://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server -->
 		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-server</artifactId>
-			<version>9.4.14.v20181114</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-webapp -->
-		<dependency>
-		    <groupId>org.eclipse.jetty</groupId>
-		    <artifactId>jetty-webapp</artifactId>
-		    <version>9.4.14.v20181114</version>
+			<groupId>org.eclipse.jetty.aggregate</groupId>
+			<artifactId>jetty-all</artifactId>
+			<version>8.2.0.v20160908</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
 			<artifactId>jetty-jsp</artifactId>
-			<version>9.2.27.v20190403</version>
+			<version>8.1.9.v20130131</version>
 		</dependency>
-		
-		
 		<!-- http://mvnrepository.com/artifact/org.freemarker/freemarker -->
 		<dependency>
 			<groupId>org.freemarker</groupId>
@@ -163,12 +154,6 @@
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-pool2</artifactId>
 		    <version>2.5.0</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
-		<dependency>
-		    <groupId>redis.clients</groupId>
-		    <artifactId>jedis</artifactId>
-		    <version>2.9.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/de.ruedigermoeller/fst -->
 		<dependency>
