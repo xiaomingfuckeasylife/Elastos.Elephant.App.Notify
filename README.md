@@ -1,4 +1,4 @@
-# Elastos.ORG.Fun
+# Elastos.Elephant.App.Notify
 
 ### software requirement 
 
