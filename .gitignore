@@ -1,0 +1,8 @@
+/static
+/target/
+.classpath
+.project
+/.settings/
+/logs/
+/.idea/
+notify.iml

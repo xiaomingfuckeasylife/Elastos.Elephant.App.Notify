@@ -1,0 +1,11 @@
+jdbcUrl=jdbc:mysql://127.0.0.1/notify?characterEncoding=utf8&useSSL=false
+user=root
+password=87654321
+devMode = true
+
+node_http_rest_best_height=http://localhost:21334/api/v1/block/height
+node_http_rest_block_info=http://localhost:21334/api/v1/block/details/height
+recomend_gas_per_tx=0.0001
+node_http_rest_addr_utxo=http://localhost:21334/api/v1/asset/utxos
+node_http_rest_sendRawTx=http://localhost:21334/api/v1/transaction
+node_http_rest_getTransactionByHash=http://localhost:21334/api/v1/transaction
