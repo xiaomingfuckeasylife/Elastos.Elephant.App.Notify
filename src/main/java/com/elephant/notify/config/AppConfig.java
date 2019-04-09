@@ -17,9 +17,9 @@ import com.jfinal.plugin.activerecord.ModelRecordElResolver;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.plugin.cron4j.Cron4jPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
-import com.jfinal.plugin.redis.RedisPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
+import com.jfplugin.mail.MailPlugin;
 
 public class AppConfig extends JFinalConfig{
 	
@@ -55,11 +55,7 @@ public class AppConfig extends JFinalConfig{
 	public static DruidPlugin createDruidPlugin() {
 		return new DruidPlugin(PropKit.get("jdbcUrl"), PropKit.get("user"), PropKit.get("password").trim());
 	}
-	
-	public static RedisPlugin createRedisPlugin() {
-		return new RedisPlugin("redpacket", "localhost");
-	}
-	
+
 	public static Cron4jPlugin createCron4jPlugin() {
 		Cron4jPlugin cp = new Cron4jPlugin();
 		return cp;
@@ -81,6 +77,8 @@ public class AppConfig extends JFinalConfig{
 		Cron4jPlugin cp = createCron4jPlugin();
 		me.add(cp);
 
+		// mail
+		me.add(new MailPlugin(PropKit.use("mail.properties").getProperties()));
 		com.elephant.notify.entity._MappingKit.mapping(arp);
 	}
 	

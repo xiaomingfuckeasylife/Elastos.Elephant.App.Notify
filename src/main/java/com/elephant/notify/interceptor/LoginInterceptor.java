@@ -30,7 +30,7 @@ public class LoginInterceptor implements Interceptor {
 			inv.invoke();
 		}catch(Throwable ex) {
 			ex.printStackTrace();
-			c.setAttr("error",ex.getMessage());
+			c.setAttr("msg",ex.getMessage());
 			c.render("error.jsp");
 			return;
 		}

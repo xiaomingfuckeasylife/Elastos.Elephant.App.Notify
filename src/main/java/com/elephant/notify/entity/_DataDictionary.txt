@@ -1,0 +1,13 @@
+Table: notify_user
+-------------------+---------------+------+-----+-------------------+---------
+ Field             | Type          | Null | Key | Default           | Remarks 
+-------------------+---------------+------+-----+-------------------+---------
+ id                | BIGINT(19)    | NO   | PRI |                   |         
+ ela_address       | VARCHAR(34)   | NO   |     |                   |         
+ status            | INT(10)       | NO   |     |                   | 0 initial , 1 verified ,2 verify failed
+ email             | VARCHAR(64)   | NO   |     |                   |         
+ local_system_time | TIMESTAMP(26) | YES  |     | CURRENT_TIMESTAMP |         
+ verify_code       | VARCHAR(10)   | YES  |     |                   |         
+ uuid              | VARCHAR(64)   | YES  |     |                   |         
+-------------------+---------------+------+-----+-------------------+---------
+

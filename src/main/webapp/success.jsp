@@ -18,8 +18,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 <!-- Header -->
 <header id="header">
-    <h1>Oops , Somethong is not right</h1>
-    <p>${msg}<br />
+    <h1>Thank you for you subscription.</h1>
     </p>
 </header>
 <script src="/assets/js/main.js"></script>

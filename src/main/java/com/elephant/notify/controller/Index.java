@@ -22,7 +22,7 @@ public class Index extends Controller {
 
     public void index() throws Exception{
         String callbackUrl = URLEncoder.encode(getAttr("ctx")+"/subscribe","utf-8");
-        String returnUrl = URLEncoder.encode(getAttr("ctx")+"/verification","utf-8");
+        String returnUrl = URLEncoder.encode(getAttr("ctx")+"/load","utf-8");
         String desc = "notification";
         String appId = PropKit.get("app_id");
         String publicKey = PropKit.get("did_pubkey");
@@ -31,7 +31,7 @@ public class Index extends Controller {
         String randomNumber = DatatypeConverter.printHexBinary(Sha256.sha256((System.currentTimeMillis()+"").getBytes()));
         String appName = PropKit.get("app_name");
         String schema = String.format(PropKit.get("elephant_login_auth"),callbackUrl,returnUrl,desc,appId,publicKey,signature,did,randomNumber,appName);
-        setAttr("elephant_auth", schema);
+        setAttr("elephant_auth", schema).setAttr("step",1);
         render("/index.jsp");
     }
 
