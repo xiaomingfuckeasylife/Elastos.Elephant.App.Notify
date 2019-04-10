@@ -62,7 +62,7 @@ public class Load extends Controller {
         logger.info("Email = {}",email);
         String code = genCode();
         try{
-            MailKit.send((String)email ,null, "Elephant Wallet Notification Service Load", "Load Code is " + code);
+            MailKit.send((String)email ,null, "Elephant Wallet Notification Service", "Verification Code is " + code);
         }catch (Exception ex){
             ex.printStackTrace();
             setAttr("msg","Illegal email address");

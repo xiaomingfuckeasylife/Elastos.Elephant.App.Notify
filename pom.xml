@@ -184,6 +184,12 @@
 			<artifactId>jfinal-mail-plugin</artifactId>
 			<version>3.0</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp-ws -->
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp-ws</artifactId>
+			<version>3.4.2</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>fun</finalName>

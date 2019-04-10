@@ -2,6 +2,7 @@ package com.elephant.notify.config;
 
 import com.elephant.notify.interceptor.LoginInterceptor;
 import com.elephant.notify.router.Router;
+import com.elephant.notify.websocket.Client;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -20,11 +21,24 @@ import com.jfinal.plugin.druid.DruidPlugin;
 import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import com.jfplugin.mail.MailPlugin;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AppConfig extends JFinalConfig{
-	
+	private Logger logger = LoggerFactory.getLogger(AppConfig.class);
 	public void afterJFinalStart(){
-		
+		logger.info("initial websocket");
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try{
+					Client.connect();
+				}catch (Exception ex){
+					ex.printStackTrace();
+					System.exit(-1);
+				}
+			}
+		}).start();
 	}
 	
 	/**
