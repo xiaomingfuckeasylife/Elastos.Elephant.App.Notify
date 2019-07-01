@@ -65,4 +65,28 @@ public abstract class BaseNotifyUser<M extends BaseNotifyUser<M>> extends Model<
 		return getStr("uuid");
 	}
 
+	public void setPeriod(java.lang.Integer period) {
+		set("period", period);
+	}
+	
+	public java.lang.Integer getPeriod() {
+		return getInt("period");
+	}
+
+	public void setPrivKey(java.lang.String privKey) {
+		set("privKey", privKey);
+	}
+	
+	public java.lang.String getPrivKey() {
+		return getStr("privKey");
+	}
+
+	public void setAddress(java.lang.String address) {
+		set("address", address);
+	}
+	
+	public java.lang.String getAddress() {
+		return getStr("address");
+	}
+
 }

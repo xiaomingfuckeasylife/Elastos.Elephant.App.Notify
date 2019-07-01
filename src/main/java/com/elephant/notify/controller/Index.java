@@ -6,6 +6,7 @@
  */
 package com.elephant.notify.controller;
 
+import com.elephant.notify.util.Constant;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.PropKit;
 import io.github.novacrypto.hashing.Sha256;
@@ -31,8 +32,8 @@ public class Index extends Controller {
         String randomNumber = DatatypeConverter.printHexBinary(Sha256.sha256((System.currentTimeMillis()+"").getBytes()));
         String appName = PropKit.get("app_name");
         String schema = String.format(PropKit.get("elephant_login_auth"),callbackUrl,returnUrl,desc,appId,publicKey,signature,did,randomNumber,appName);
-        setAttr("elephant_auth", schema).setAttr("step",1);
-        render("/index.jsp");
+        setAttr("elephant", schema).setAttr("step",1);
+        render(Constant.BASE_URL+"/index.jsp");
     }
 
 }

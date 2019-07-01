@@ -1,6 +1,8 @@
 package com.elephant.notify.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
+
+import com.elephant.notify.util.Constant;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
@@ -31,7 +33,7 @@ public class LoginInterceptor implements Interceptor {
 		}catch(Throwable ex) {
 			ex.printStackTrace();
 			c.setAttr("msg",ex.getMessage());
-			c.render("error.jsp");
+			c.render(Constant.BASE_URL+"/error.jsp");
 			return;
 		}
 	}

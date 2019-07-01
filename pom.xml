@@ -3,9 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.elastos.elephant.app.notify</groupId>
 	<artifactId>notify</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<version>release</version>
-	<name>redpacket Maven Webapp</name>
+	<name>notification Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<jdk.version>1.8</jdk.version>
@@ -192,7 +192,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>fun</finalName>
+		<finalName>notification</finalName>
 		<pluginManagement>
 			<plugins>
 				<!-- compiler插件, 设定JDK版本 -->
@@ -208,5 +208,20 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.elephant.notify.config.AppConfig</mainClass>
+						</manifest>
+					</archive>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>

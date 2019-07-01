@@ -8,6 +8,7 @@ package com.elephant.notify.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.elephant.notify.entity.NotifyUser;
+import com.elephant.notify.util.Constant;
 import com.jfinal.core.Controller;
 import com.jfplugin.mail.MailKit;
 import org.elastos.util.ela.ElaSignTool;
@@ -29,15 +30,14 @@ public class Load extends Controller {
     private Logger logger = LoggerFactory.getLogger(Load.class);
 
     public void index(){
-        String response = getPara("response");
-        Map<String,Object> param =(Map<String, Object>) JSON.parse(response);
-        String sign = (String)param.get("Sign");
+        String data = getPara("Data");
+        Map<String,Object> param =(Map<String, Object>) JSON.parse(data);
+        String sign = getPara("Sign");
         String publicKey = (String)param.get("PublicKey");
-        String data = (String)param.get("Data");
 
         if(!ElaSignTool.verify(data.getBytes(),DatatypeConverter.parseHexBinary(sign), DatatypeConverter.parseHexBinary(publicKey))){
             setAttr("msg","Data verification Error");
-            render("/error.jsp");
+            render(Constant.BASE_URL+"/error.jsp");
             return;
         }
 
@@ -45,7 +45,7 @@ public class Load extends Controller {
         String ELAAddress = (String)detail.get("ELAAddress");
         if (ELAAddress == null) {
             setAttr("msg","ELA Address can not be blank");
-            render("/error.jsp");
+            render(Constant.BASE_URL+"/error.jsp");
             return;
         }
         Object email = detail.get("EMail");
@@ -55,20 +55,34 @@ public class Load extends Controller {
 
         if ( email == null ) {
             setAttr("msg","Go to Elephant Wallet , \"My profile -> Email \" , fill in your Email information");
-            render("/error.jsp");
+            render(Constant.BASE_URL+"/error.jsp");
+            return;
+        }
+
+        if (!isValid((String)email)){
+            setAttr("msg","Invalid email address");
+            render(Constant.BASE_URL+"/error.jsp");
             return;
         }
 
         logger.info("Email = {}",email);
+        final String e = (String)email;
+
         String code = genCode();
-        try{
-            MailKit.send((String)email ,null, "Elephant Wallet Notification Service", "Verification Code is " + code);
-        }catch (Exception ex){
-            ex.printStackTrace();
-            setAttr("msg","Illegal email address");
-            render("/error.jsp");
-            return;
-        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for(int i=0;i<3;i++){
+                    try{
+                        MailKit.send(e ,null, "Elephant Wallet Notification Service", "Verification Code is " + code);
+                        break;
+                    }catch (Exception ex){
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+
         NotifyUser notifyUser = new NotifyUser();
         notifyUser.setElaAddress(ELAAddress);
         notifyUser.setEmail((String)email);
@@ -79,7 +93,7 @@ public class Load extends Controller {
         setAttr("step" , 2);
         setAttr("uuid",notifyUser.getUuid());
         setAttr("action","verify");
-        render("/index.jsp");
+        render(Constant.BASE_URL+"/index.jsp");
     }
 
     private String genCode(){
@@ -89,5 +103,10 @@ public class Load extends Controller {
             ret += sr.nextInt(10);
         }
         return ret;
+    }
+
+    static boolean isValid(String email) {
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        return email.matches(regex);
     }
 }

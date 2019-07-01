@@ -3,22 +3,17 @@ user=root
 password=87654321
 devMode = true
 
-node_http_rest_best_height=http://localhost:21334/api/v1/block/height
-node_http_rest_block_info=http://localhost:21334/api/v1/block/details/height
-recomend_gas_per_tx=0.0001
-node_http_rest_addr_utxo=http://localhost:21334/api/v1/asset/utxos
-node_http_rest_sendRawTx=http://localhost:21334/api/v1/transaction
-node_http_rest_getTransactionByHash=http://localhost:21334/api/v1/transaction
-
-websocket_endpoint=ws://localhost:21335
+node_http_rest_balances=http://localhost:20334/api/v1/asset/balances/
+node_http_rest_tx=http://localhost:20334/api/v1/transaction/
+websocket_endpoint=ws://localhost:20335
 
 #elephant
 elephant_login_auth=elaphant://identity?CallbackUrl=%s&ReturnUrl=%s&Description=%s&AppID=%s&PublicKey=%s&Signature=%s&DID=%s&RandomNumber=%s&AppName=%s&RequestInfo=ELAAddress,Email,PhoneNumber
-elephant_pay=elaphant://elapay?CallbackUrl=%s&Description=%s&AppID=%s&SerialNumber=%s&PublicKey=%s&Signature=%s&Amount=%f&PaymentAddress=%s&DID=%s&CoinName=ELA&AppName=%s
-app_id=cc053c61afc22dda9a309e96943c1736
-did_pubkey=03800183146B09B2667B67AF2E33A1738C9FF17FD7F3D8A67A4BBEF2D4B84A300B
-did=iihfq1sMyWep5zH5CcFTnEZWR3De5fnLf6
-did_signature=1EDB4147AEF65D0F0B0F518F461AE17D26159681303B935D4540FF91BA4A0B66C369574592E5D9F0FC79260BC0D3DF6535C55EC8D1F6C6F6DD946703F69802E2
+elephant_pay=elaphant://elapay?ReturnUrl=%s&Description=%s&AppID=%s&RandomNumber=%s&PublicKey=%s&Signature=%s&ReceivingAddress=%s&DID=%s&CoinName=ELA&AppName=%s&Amount=%f
+app_id=08F1F26053A9AA46CADF42ED56603A7DADF90E94989E758339270D55419B718E0F778BF56D1C2DF425482025D04BA44842FA63DEAB066DDD96991EF1126BFD42
+did_pubkey=027468E86ED01A65D7135A920E6F8583D365413A285A870219A7F77245BB99E28E
+did=ieECzQc1utNEUcJpKf9uKqk8ayvysYv5TM
+did_signature=08F1F26053A9AA46CADF42ED56603A7DADF90E94989E758339270D55419B718E0F778BF56D1C2DF425482025D04BA44842FA63DEAB066DDD96991EF1126BFD42
 app_name=notification
 https=false
-
+project_prefix=/

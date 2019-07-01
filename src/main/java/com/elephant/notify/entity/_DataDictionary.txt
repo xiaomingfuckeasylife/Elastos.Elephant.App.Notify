@@ -9,5 +9,8 @@ Table: notify_user
  local_system_time | TIMESTAMP(26) | YES  |     | CURRENT_TIMESTAMP |         
  verify_code       | VARCHAR(10)   | YES  |     |                   |         
  uuid              | VARCHAR(64)   | YES  |     |                   |         
+ period            | INT(10)       | YES  |     |                   |         
+ privKey           | VARCHAR(64)   | YES  |     |                   |         
+ address           | VARCHAR(34)   | YES  |     |                   |         
 -------------------+---------------+------+-----+-------------------+---------
 

@@ -2,6 +2,7 @@ package com.elephant.notify.config;
 
 import com.elephant.notify.interceptor.LoginInterceptor;
 import com.elephant.notify.router.Router;
+import com.elephant.notify.task.ConfirmTask;
 import com.elephant.notify.websocket.Client;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
@@ -72,6 +73,7 @@ public class AppConfig extends JFinalConfig{
 
 	public static Cron4jPlugin createCron4jPlugin() {
 		Cron4jPlugin cp = new Cron4jPlugin();
+		cp.addTask("* * * * *", new ConfirmTask());
 		return cp;
 	}
 	
@@ -90,6 +92,7 @@ public class AppConfig extends JFinalConfig{
 		// cron4j plugin
 		Cron4jPlugin cp = createCron4jPlugin();
 		me.add(cp);
+
 
 		// mail
 		me.add(new MailPlugin(PropKit.use("mail.properties").getProperties()));
